@@ -1,0 +1,91 @@
+<div style="overflow:auto">
+  <!-- <input type="button" value="Add" class="btn btn-default" (click)="addEmp()" /> -->
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>First Name</td>
+        <td>Middle Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Phone Number</td>
+        <td>Role</td>
+        <td>Address</td>
+        <td>Customer Name</td>
+        <td>Created On</td>
+        <td>Modified On</td>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees;let i=idx">
+        <ng-template [ngTemplateOutlet]="loadTemplate(emp)" [ngTemplateOutletContext]="{$implicit: emp, idx: i }">
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- <div>{{statusMessage}}</div> -->
+<ng-template #readOnlyTemplate let-emp>
+  <td>{{emp.id}}</td>
+  <td>{{emp.firstname}}</td>
+  <td>{{emp.middlename}}</td>
+  <td>{{emp.lastname}}</td>
+  <td>{{emp.email}}</td>
+  <td>{{emp.phone}}</td>
+  <td>{{emp.role}}</td>
+  <td>{{emp.address}}</td>
+  <td>{{emp.custname}}</td>
+  <td>{{emp.createdon}}</td>
+  <td>{{emp.modifiedon}}</td>
+  <td>
+    <input type="button" value="Edit" class="btn btn-default" class="btn btn-primary" (click)="editEmployee(emp)" />
+  </td>
+  <td>
+    <input type="button" value="Delete" (click)="deleteEmp(emp)" class="btn btn-danger" />
+  </td>
+</ng-template>
+<ng-template #editTemplate>
+  <td>
+    {{selemp.id}}
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.firstname" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.middlename" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.lastname" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.email" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.phone" />
+  </td>
+  <td>
+    {{selemp.role}}
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="selemp.address" />
+  </td>
+  <td>
+    {{selemp.custname}}
+  </td>
+  <td>
+    {{selemp.createdon}}
+  </td>
+  <td>
+    {{selemp.modifiedon}}
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="saveEmp()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </td>
+
+</ng-template>
+<button skipLocationChange routerLink='/addEmployee' class="btn btn-primary">Add new
+  Employee</button>
