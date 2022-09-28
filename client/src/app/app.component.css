@@ -1,0 +1,24 @@
+.table
+{
+    display:flex;
+    /* border: 2px black solid; */
+    margin:10px;
+    padding:5px;
+}
+
+button{
+    display:inline-block;
+    margin:5px;
+    padding:5px;
+    color: white;
+}
+
+#load
+{
+    margin:10px;
+    color:white;
+}
+#heading{
+    font-weight: bold;
+
+}
